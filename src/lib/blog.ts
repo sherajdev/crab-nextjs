@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import { marked } from 'marked';
 
 const BLOG_DIR = path.join(process.cwd(), 'content/blog');
 
@@ -41,7 +42,7 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
         title: data.title || slug,
         date: formatDate(data.date, slug),
         summary: data.summary,
-        content,
+        content: marked(content) as string,
       };
     })
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
@@ -64,6 +65,6 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
     title: data.title || slug,
     date: formatDate(data.date, slug),
     summary: data.summary,
-    content,
+    content: marked(content) as string,
   };
 }

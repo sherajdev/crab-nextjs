@@ -7,29 +7,32 @@ interface BlogPostProps {
 
 export default function BlogPostComponent({ post }: BlogPostProps) {
   return (
-    <section className="glass-card p-10 mb-8 animate-fade-up">
+    <section className="glass-card p-8 md:p-10 mb-8 animate-fade-up">
       <Link
         href="/"
         className="inline-flex items-center gap-2 text-[var(--teal)] hover:text-[var(--coral-light)] transition-colors mb-6"
       >
-        <span>← Back</span>
+        <span>← Back to Home</span>
       </Link>
 
       <header className="mb-8 pb-6 border-b border-[var(--glass-border)]">
-        <span className="text-sm font-bold text-[var(--teal)] uppercase tracking-wider block mb-2">
+        <span className="text-sm font-bold text-[var(--teal)] uppercase tracking-wider block mb-3">
           {post.date}
         </span>
-        <h1 className="font-bebas text-5xl text-gradient inline-block animate-shimmer">
+        <h1 className="font-bebas text-4xl md:text-5xl text-gradient inline-block animate-shimmer pb-1">
           {post.title}
         </h1>
+        {post.summary && (
+          <p className="mt-4 text-[var(--text-secondary)] text-lg">
+            {post.summary}
+          </p>
+        )}
       </header>
 
-      <div className="prose prose-invert max-w-none">
-        <div
-          className="text-[var(--text-primary)] leading-7 font-light text-lg"
-          dangerouslySetInnerHTML={{ __html: post.content }}
-        />
-      </div>
+      <article
+        className="blog-content"
+        dangerouslySetInnerHTML={{ __html: post.content }}
+      />
     </section>
   );
 }
