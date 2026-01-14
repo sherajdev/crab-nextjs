@@ -1,36 +1,108 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Crab Next.js
+
+A modern personal website built with Next.js 16, React 19, and Tailwind CSS 4. Features a blog system with markdown support, custom animations, and glass morphism design.
+
+## Features
+
+- **Next.js App Router** with React 19
+- **Markdown Blog System** with gray-matter frontmatter parsing
+- **Tailwind CSS 4** with custom animations and glass morphism effects
+- **Edge Runtime** for optimal Cloudflare Pages deployment
+- **Responsive Design** with custom gradient and animation effects
+- **TypeScript** for type safety
+
+## Tech Stack
+
+- [Next.js 16](https://nextjs.org) - React framework with App Router
+- [React 19](https://react.dev) - UI library
+- [Tailwind CSS 4](https://tailwindcss.com) - Utility-first CSS framework
+- [TypeScript](https://www.typescriptlang.org) - Type-safe JavaScript
+- [gray-matter](https://github.com/jonschlinkert/gray-matter) - Parse YAML frontmatter from markdown
 
 ## Getting Started
+
+### Prerequisites
+
+- Node.js 18+ installed
+- npm, yarn, pnpm, or bun package manager
+
+### Development
 
 First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Available Commands
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run dev      # Start development server at localhost:3000
+npm run build    # Build for production
+npm run start    # Run production server
+npm run lint     # Run ESLint with TypeScript support
+```
+
+## Project Structure
+
+```
+src/
+├── app/              # Next.js App Router pages
+│   ├── layout.tsx    # Root layout with fonts and background effects
+│   ├── page.tsx      # Home page with hero, identity cards, and blog list
+│   └── blog/[slug]/  # Dynamic blog post routes (Edge Runtime)
+├── components/       # React components
+│   ├── BlogList.tsx  # Blog post list component
+│   └── BlogPost.tsx  # Single blog post display
+└── lib/
+    └── blog.ts       # Blog data fetching from markdown files
+```
+
+## Blog System
+
+Blog posts are markdown files stored in the `blog/` directory at the project root. Each post includes YAML frontmatter:
+
+```yaml
+---
+title: Post Title
+date: 2024-01-14
+summary: Optional summary
+---
+
+Your markdown content here...
+```
+
+Posts are statically generated at build time and use Edge Runtime for optimal performance on Cloudflare Pages.
+
+## Styling
+
+The project uses Tailwind CSS 4 with custom features:
+
+- **CSS Variables** for theme colors (coral, teal, gold)
+- **Glass Morphism** cards with backdrop blur effects
+- **Custom Animations**: float, shimmer, fadeUp, rotate
+- **Gradient Text** effects
+
+## Deployment
+
+This project is optimized for deployment on [Cloudflare Pages](https://pages.cloudflare.com) with Edge Runtime support. It can also be deployed on:
+
+- [Vercel](https://vercel.com)
+- [Netlify](https://netlify.com)
+- Any platform supporting Next.js
+
+For Cloudflare Pages, the app automatically uses Edge Runtime for optimal performance.
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+To learn more about the technologies used:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Next.js Documentation](https://nextjs.org/docs) - Learn about Next.js features and API
+- [React Documentation](https://react.dev) - Learn about React 19
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs) - Learn about Tailwind CSS 4
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT
