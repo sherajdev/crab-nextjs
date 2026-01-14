@@ -2,8 +2,6 @@ import { getBlogPost, getBlogPosts } from '@/lib/blog';
 import BlogPostComponent from '@/components/BlogPost';
 import { notFound } from 'next/navigation';
 
-export const runtime = 'edge';
-
 export async function generateStaticParams() {
   const posts = await getBlogPosts();
   return posts.map((post) => ({

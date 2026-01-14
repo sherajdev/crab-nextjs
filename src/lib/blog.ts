@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 
-const BLOG_DIR = path.join(process.cwd(), '../../blog');
+const BLOG_DIR = path.join(process.cwd(), 'content/blog');
 
 export interface BlogPost {
   slug: string;
@@ -10,6 +10,16 @@ export interface BlogPost {
   date: string;
   summary?: string;
   content: string;
+}
+
+function formatDate(date: unknown, fallback: string): string {
+  if (date instanceof Date) {
+    return date.toISOString().split('T')[0];
+  }
+  if (typeof date === 'string') {
+    return date;
+  }
+  return fallback;
 }
 
 export async function getBlogPosts(): Promise<BlogPost[]> {
@@ -24,11 +34,12 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
       const filePath = path.join(BLOG_DIR, file);
       const fileContent = fs.readFileSync(filePath, 'utf-8');
       const { data, content } = matter(fileContent);
+      const slug = file.replace('.md', '');
 
       return {
-        slug: file.replace('.md', ''),
-        title: data.title || file.replace('.md', ''),
-        date: data.date || file.replace('.md', ''),
+        slug,
+        title: data.title || slug,
+        date: formatDate(data.date, slug),
         summary: data.summary,
         content,
       };
@@ -51,7 +62,7 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
   return {
     slug,
     title: data.title || slug,
-    date: data.date || slug,
+    date: formatDate(data.date, slug),
     summary: data.summary,
     content,
   };
