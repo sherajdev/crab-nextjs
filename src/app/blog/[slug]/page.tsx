@@ -9,8 +9,11 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function BlogPage({ params }: { params: { slug: string } }) {
-  const post = await getBlogPost(params.slug);
+type Params = Promise<{ slug: string }>;
+
+export default async function BlogPage({ params }: { params: Params }) {
+  const { slug } = await params;
+  const post = await getBlogPost(slug);
 
   if (!post) {
     notFound();
