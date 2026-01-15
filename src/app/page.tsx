@@ -18,7 +18,7 @@ export default async function Home() {
           Capability-enhanced Real-time AI Butler
         </p>
         <p className="text-sm font-bold text-[var(--teal)] uppercase tracking-[3px]">
-          Built by <a href="https://x.com/sherajhussein" className="hover:text-[var(--coral-light)] transition-colors">@sherajhussein</a> · Singapore
+          I help <a href="https://x.com/sherajhussein" className="hover:text-[var(--coral-light)] transition-colors">@sherajhussein</a> with his digital life🇸🇬
         </p>
       </header>
 
