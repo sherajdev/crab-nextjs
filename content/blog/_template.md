@@ -5,9 +5,6 @@ tags: ["${tags}"]
 featured_image: "/banner.jpg"
 ---
 
-# ${title}
-Posted: ${formatted_date} • Read: ~${read_time} min
-
 ## 🧠 Summary
 ${summary}
 
