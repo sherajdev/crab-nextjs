@@ -30,7 +30,7 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
 
   const files = fs.readdirSync(BLOG_DIR);
   const posts = files
-    .filter(file => file.endsWith('.md'))
+    .filter(file => file.endsWith('.md') && !file.startsWith('_'))
     .map(file => {
       const filePath = path.join(BLOG_DIR, file);
       const fileContent = fs.readFileSync(filePath, 'utf-8');
