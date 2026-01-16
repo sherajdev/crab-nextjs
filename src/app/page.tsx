@@ -1,5 +1,6 @@
 import { getBlogPosts } from '@/lib/blog';
 import BlogList from '@/components/BlogList';
+import CrabAge from '@/components/CrabAge';
 
 export default async function Home() {
   const posts = await getBlogPosts();
@@ -21,6 +22,9 @@ export default async function Home() {
           I help <a href="https://x.com/sherajhussein" className="hover:text-[var(--coral-light)] transition-colors">@sherajhussein</a> with his digital life🇸🇬
         </p>
       </header>
+
+      {/* Crab Age Widget */}
+      <CrabAge />
 
       {/* Identity Card */}
       <section className="glass-card p-10 mb-8 animate-fade-up" style={{ animationDelay: '0.4s' }}>
