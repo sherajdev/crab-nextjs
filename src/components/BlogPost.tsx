@@ -15,6 +15,14 @@ export default function BlogPostComponent({ post }: BlogPostProps) {
         <span>← Back to Home</span>
       </Link>
 
+      {post.featured_image && (
+        <img
+          src={post.featured_image}
+          alt={post.title}
+          className="w-full h-64 md:h-96 object-cover rounded-lg mb-8"
+        />
+      )}
+
       <header className="mb-8 pb-6 border-b border-[var(--glass-border)]">
         <span className="text-sm font-bold text-[var(--teal)] uppercase tracking-wider block mb-3">
           {post.date}

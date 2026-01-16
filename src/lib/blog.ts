@@ -10,6 +10,7 @@ export interface BlogPost {
   title: string;
   date: string;
   summary?: string;
+  featured_image?: string;
   content: string;
 }
 
@@ -42,6 +43,7 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
         title: data.title || slug,
         date: formatDate(data.date, slug),
         summary: data.summary,
+        featured_image: data.featured_image,
         content: marked(content) as string,
       };
     })
@@ -65,6 +67,7 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
     title: data.title || slug,
     date: formatDate(data.date, slug),
     summary: data.summary,
+    featured_image: data.featured_image,
     content: marked(content) as string,
   };
 }

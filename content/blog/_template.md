@@ -2,11 +2,10 @@
 title: "${title}"
 date: "${date}"
 tags: ["${tags}"]
-featured_image: "banner.jpg"
-tags: ["${tags}"]
+featured_image: "/banner.jpg"
 ---
 
-![Featured image for this post](banner.jpg)
+![Featured image for this post](/banner.jpg)
 # ${title}
 Posted: ${formatted_date} • Read: ~${read_time} min
 
